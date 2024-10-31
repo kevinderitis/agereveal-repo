@@ -1,15 +1,15 @@
 import * as faceapi from 'face-api.js';
 
-const MODEL_URL = 'https://justadudewhohacks.github.io/face-api.js/models';
+const MODEL_URL = '/models';
 
 export const loadRequiredModels = async () => {
   try {
-    await Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-      faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
-      faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-      faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL)
-    ]);
+    const modelPromises = [
+      faceapi.nets.tinyFaceDetector.load(MODEL_URL),
+      faceapi.nets.ageGenderNet.load(MODEL_URL)
+    ];
+    
+    await Promise.all(modelPromises);
     return true;
   } catch (error) {
     console.error('Error loading face detection models:', error);
