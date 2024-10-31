@@ -218,8 +218,8 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
               {realAge > detectedAge
                 ? '¡Te ves más joven de lo que eres! 🎉'
                 : realAge < detectedAge
-                ? 'La cámara debe estar cansada... ¡Te ves más joven en persona! 😊'
-                : '¡Exactamente! ¡Di en el clavo! 🎯'}
+                  ? 'La cámara debe estar cansada... ¡Te ves más joven en persona! 😊'
+                  : '¡Exactamente! ¡Di en el clavo! 🎯'}
             </p>
             <div className="space-y-4">
               <button
@@ -243,29 +243,32 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
     }
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-6">
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <Webcam
-              ref={webcamRef}
-              className="w-full md:h-[400px] object-cover"
-              mirrored
-              screenshotFormat="image/jpeg"
-              videoConstraints={videoConstraints}
-            />
-            {isScanning && (
-              <div className="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full px-4 py-2 shadow-md">
-                <span className="text-lg font-semibold text-purple-600">
-                  {timeLeft}s
-                </span>
-              </div>
-            )}
+      <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex flex-col">
+        <div className="flex-1 flex items-center justify-center p-4">
+          <div className="w-full max-w-md space-y-6">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <Webcam
+                ref={webcamRef}
+                className="w-full md:h-[400px] object-cover"
+                mirrored
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+              />
+              {isScanning && (
+                <div className="absolute top-4 right-4 bg-white bg-opacity-90 rounded-full px-4 py-2 shadow-md">
+                  <span className="text-lg font-semibold text-purple-600">
+                    {timeLeft}s
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
-          
+        </div>
+
+        <div className="p-4 space-y-3">
           <p className="text-center text-white text-lg font-light">
             ¿Querés saber qué edad aparentás?
           </p>
-
           {!isScanning && (
             <button
               onClick={startScanning}
@@ -278,6 +281,7 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
         </div>
       </div>
     );
+
   };
 
   return renderContent();
