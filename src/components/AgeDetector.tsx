@@ -244,7 +244,7 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex flex-col">
-        <div className="flex-1 flex items-center justify-center p-4 max-h-[70vh]">
+        <div className="flex-1 flex items-center justify-center p-4">
           <div className="w-full max-w-md">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <Webcam
@@ -262,22 +262,22 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
 
-        <div className="p-4 mt-auto">
-          <p className="text-center text-white text-lg font-light mb-3">
-            ¿Querés saber qué edad tenés?
-          </p>
-          {!isScanning && (
-            <button
-              onClick={startScanning}
-              className="w-full bg-white text-purple-600 py-4 px-6 rounded-lg hover:bg-opacity-90 transition-colors font-semibold flex items-center justify-center"
-            >
-              <Camera className="w-6 h-6 mr-2" />
-              Descubre tu edad
-            </button>
-          )}
+            <div className="mt-4">
+              <p className="text-center text-white text-lg font-light mb-2">
+                ¿Querés saber qué edad aparentás?
+              </p>
+              {!isScanning && (
+                <button
+                  onClick={startScanning}
+                  className="w-full bg-white text-purple-600 py-4 px-6 rounded-lg hover:bg-opacity-90 transition-colors font-semibold flex items-center justify-center"
+                >
+                  <Camera className="w-6 h-6 mr-2" />
+                  Descubre tu edad
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );
