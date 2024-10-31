@@ -244,12 +244,12 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex flex-col">
-        <div className="flex-1 flex items-center justify-center p-4">
-          <div className="w-full max-w-md space-y-6">
+        <div className="flex-1 flex items-center justify-center p-4 max-h-[70vh]">
+          <div className="w-full max-w-md">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <Webcam
                 ref={webcamRef}
-                className="w-full md:h-[400px] object-cover"
+                className="w-full h-[50vh] md:h-[400px] object-cover"
                 mirrored
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
@@ -265,9 +265,9 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
           </div>
         </div>
 
-        <div className="p-4 space-y-3">
-          <p className="text-center text-white text-lg font-light">
-            ¿Querés saber qué edad aparentás?
+        <div className="p-4 mt-auto">
+          <p className="text-center text-white text-lg font-light mb-3">
+            ¿Querés saber qué edad tenés?
           </p>
           {!isScanning && (
             <button
@@ -281,6 +281,7 @@ export const AgeDetector: React.FC<AgeDetectorProps> = ({ onChatStart }) => {
         </div>
       </div>
     );
+
 
   };
 
